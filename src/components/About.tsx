@@ -33,6 +33,7 @@ export default function About() {
         end: '2000 top',
         scrub: 1,
         pin: true,
+        snap: 1 / 3,
         anticipatePin: 1,
         invalidateOnRefresh: true,
       }

@@ -42,7 +42,7 @@ export default function Services() {
           Two worlds. One vision. We craft powerful visuals and build digital experiences.
         </p>
       </div>
-    <div className="!mt-8 flex w-full gap-12 bg-[#6b7fff] bg-[linear-gradient(135deg,#6b7fff_0%,#cd7dff_100%)] !p-8 rounded-3xl">
+    <div className="!mt-8 flex w-full gap-12 bg-[#6b7fff] bg-[linear-gradient(135deg,#CFF0FF_0%,#FED6FF_100%)] !p-8 rounded-3xl">
         <div className="w-1/2 !p-8 rounded-3xl bg-white flex flex-col">
           <div className="flex border-b !border-b-gray-500 !pb-8">
             <h2 className="text-2xl md:text-4xl font-normal text-center">Creative & Graphics</h2>

@@ -1,18 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
+import { Modak } from "next/font/google";
 
-const inter = Inter({
+const modak = Modak({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400"],
+  variable: "--font-modak",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300","400","500","600","700","800","900"],
+  variable: "--font-poppins",
 });
 
 const letters = ["X", "Y", "R", "A"];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-black flex flex-col">
+    <main className={`min-h-screen bg-white text-black flex flex-col ${poppins.className}`}>
       {/* Hero Section */}
       <section className="flex-1 flex flex-col justify-center items-center text-center px-6 h-screen">
         <motion.div
@@ -31,7 +39,7 @@ export default function Home() {
           {letters.map((letter, i) => (
             <motion.span
               key={i}
-              className={`text-6xl md:text-[300px] font-extrabold tracking-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.4)] ${inter.className}`}
+              className={`text-6xl md:text-[350px] font-medium tracking-tight ${modak.className}`}
               variants={{
                 hidden: { opacity: 0, y: 80, scale: 0.8 },
                 visible: {

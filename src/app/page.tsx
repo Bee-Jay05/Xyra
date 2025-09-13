@@ -3,6 +3,7 @@
 import Home from "../components/Home";
 import About from "@/components/About";
 import Service from "@/components/ServiceCard";
+import Portfolio from "@/components/ProjectCard";
 
 export default function Page() {
   return (
@@ -10,6 +11,7 @@ export default function Page() {
       <Home />
       <About />
       <Service />
+      <Portfolio />
     </main>
   );
 
