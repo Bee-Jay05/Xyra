@@ -1,4 +1,11 @@
+import { Poppins } from "next/font/google";
 import Image from "next/image";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300","400","500","600","700","800","900"],
+  variable: "--font-poppins",
+});
 
 const projects = [
   {
@@ -20,12 +27,12 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section className="w-full py-24 bg-white" id="portfolio">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className={`w-full !py-24 bg-white ${poppins.className}`} id="portfolio">
+      <div className="max-w-6xl !mx-auto !px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Work</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center !mb-16">
+          <h2 className="text-7xl md:text-6xl font-normal text-gray-900 !mb-4">Our Work</h2>
+          <p className="text-gray-600 max-w-2xl !mx-auto">
             A showcase of projects where design meets impact. Sleek visuals, clean UI,
             and identity systems crafted for brands that want to stand out.
           </p>
@@ -46,8 +53,8 @@ export default function Portfolio() {
                   className="object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
-              <div className="p-6 bg-white">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <div className="!p-6 bg-white">
+                <h3 className="text-xl font-semibold !mb-2">{project.title}</h3>
                 <p className="text-gray-600 text-sm">{project.desc}</p>
               </div>
             </div>
