@@ -10,17 +10,17 @@ const poppins = Poppins({
 const projects = [
   {
     title: "Minimalist Logo Pack",
-    img: "/portfolio/logo-pack.png",
+    img: "/Untitled design (18).png",
     desc: "A collection of sleek, modern logos designed for startups.",
   },
   {
     title: "E-commerce UI Design",
-    img: "/portfolio/ecommerce-ui.png",
+    img: "/Screenshot 2025-09-25 18.10.51.png",
     desc: "Clean and functional shopping experience crafted with minimal aesthetics.",
   },
   {
     title: "Brand Identity System",
-    img: "/portfolio/brand-identity.png",
+    img: "/_ (11).jpeg",
     desc: "Complete visual system with typography, colors, and assets.",
   },
 ];
@@ -45,7 +45,7 @@ export default function Portfolio() {
               key={i}
               className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition"
             >
-              <div className="relative w-full h-64">
+              <div className="relative w-full h-48">
                 <Image
                   src={project.img}
                   alt={project.title}
