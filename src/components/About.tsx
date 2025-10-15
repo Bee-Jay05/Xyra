@@ -46,7 +46,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className={`overflow-hidden bg-white ${poppins.className}`}>
+    <div className={`overflow-hidden bg-white ${poppins.className}`} id='about'>
       <div ref={triggerRef}>
         <div ref={sectionRef} className="scroll-section-inner h-screen w-[300vw] flex flex-row relative">
           <div className="scroll-section h-screen w-1/4 flex items-center justify-center !p-20">

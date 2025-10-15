@@ -22,9 +22,9 @@ export default function Home() {
   return (
     <main className={`min-h-screen bg-white text-black flex flex-col ${poppins.className}`}>
       {/* Hero Section */}
-      <section className="flex-1 flex flex-col justify-center items-center text-center px-6 h-screen">
+      <section className="flex-1 flex flex-col justify-center items-center text-center px-6 h-screen bg-gradient-to-b from-indigo-400 via-indigo-200 to-white">
         <motion.div
-          className="flex space-x-2 md:space-x-4"
+          className="flex space-x-2 md:space-x-4 cursor-pointer"
           initial="hidden"
           animate="visible"
           variants={{
