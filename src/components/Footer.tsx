@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+import Link from 'next/link'
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,20 +21,20 @@ export default function Footer() {
         {/* Navigation */}
         <div>
           <ul className="!mt-8 flex justify-between max-w-md !mx-auto text-sm font-medium">
-            <li><a href="/" className="hover:text-white">Home</a></li>
-            <li><a href="/about" className="hover:text-white">About</a></li>
-            <li><a href="/services" className="hover:text-white">Services</a></li>
-            <li><a href="/work" className="hover:text-white">Work</a></li>
-            <li><a href="/contact" className="hover:text-white">Contact</a></li>
+            <li><Link className="hover:text-white" href="/">Home</Link></li>
+            <li><Link className="hover:text-white" href="/about">About</Link></li>
+            <li><Link className="hover:text-white" href="/services">Services</Link></li>
+            <li><Link className="hover:text-white" href="/work">Work</Link></li>
+            <li><Link className="hover:text-white" href="/contact">Contact</Link></li>
           </ul>
         </div>
 
         {/* Socials */}
         <div>
           <div className="!mt-6 flex justify-between w-[250px] !mx-auto text-sm font-medium">
-            <a href="#" className="hover:text-white">Twitter</a>
-            <a href="#" className="hover:text-white">LinkedIn</a>
-            <a href="#" className="hover:text-white">Instagram</a>
+            <Link className="hover:text-white" href="#">Twitter</Link>
+            <Link className="hover:text-white" href="#">LinkedIn</Link>
+            <Link className="hover:text-white" href="#">Insta</Link>
           </div>
         </div>
       </div>
