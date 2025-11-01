@@ -26,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet"></link>
+      </head>
+      <body className= "PP">
         {children}
       </body>
     </html>

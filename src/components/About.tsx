@@ -1,11 +1,8 @@
-"use client"
+"use client";
 
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Poppins } from "next/font/google";
-import React from 'react';
-import { useRef } from 'react';
-import { useEffect } from 'react';
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,92 +11,40 @@ const poppins = Poppins({
 });
 
 export default function About() {
-
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  useEffect(() => {
-    const pin = gsap.fromTo(sectionRef.current, {
-      translateX: 0
-    }, {
-      translateX: '-200vw',
-      ease: 'none',
-      duration: 1,
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        start: 'top top',
-        end: '2000 top',
-        scrub: 1,
-        pin: true,
-        snap: 1 / 3,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      }
-    })
-
-    return () => {
-      pin.kill();
-    }
-
-  }, []);
-
+  const words = ["Creative", "Innovative", "Professional", "Reliable"];
   return (
-    <div className={`overflow-hidden bg-white ${poppins.className}`} id='about'>
-      <div ref={triggerRef}>
-        <div ref={sectionRef} className="scroll-section-inner h-screen w-[300vw] flex flex-row relative">
-          <div className="scroll-section h-screen w-1/4 flex items-center justify-center !p-20">
-            <h1 className='text-9xl'>What About Xyra?</h1>
-          </div>
-          <div className="h-screen w-1/4 flex items-center justify-center">
-            <div className="bg-rose-100 w-[90%] h-[80%] rounded-4xl !p-12 relative ">
-              <h1 className='text-[360px]/70 absolute right-[40px] top-[30px] text-ultrabold text-rose-200'>01</h1>
-              <h2 className='!mt-[360px] text-7xl'>Who We Are</h2>
-              <h3 className='text-lg'>Xyra is a modern graphic design brand that blends minimalism with bold creativity. Every design we craft is intentional, clean, and unforgettable.</h3>
+    <main className="w-screen !pb-30 relative">
+      <section className="h-[90vh] !px-20 !py-20 text-white flex flex-col justify-center gap-12 relative" style={{ background: "linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(33, 33, 33, 1) 50%, rgba(0, 0, 0, 1) 100%)",}}>
+        <h1 className="text-2xl">About Us</h1>
+        <h2 className={`text-7xl font-semibold ${poppins.className}`}>Neuma is a Creative Design Agency With Extensive Experience And Talented Team.</h2>
+        <h3 className="text-2xl w-1/2">We are the ones with the creative idea of ​​creating stunning visuals that grab attention and leave a lasting impression!</h3>
+        <Image
+          src="/bitmap31.png"
+          alt="About Us Image"
+          width={800}
+          height={800}
+          className="object-cover rounded-3xl absolute top-[-100] right-[-450] z-0 opacity-10"
+        />
+      </section>
+      <div className="overflow-hidden whitespace-nowrap bg-[#111] text-white !py-10 rotate-357 absolute left-[-10] bottom-[75]">
+        <motion.div
+          className="flex text-4xl font-semibold uppercase w-[200vw]"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            repeat: Infinity,
+            duration: 20,
+            ease: "linear",
+          }}
+        >
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex w-screen justify-between !px-15">
+              {words.map((word, j) => (
+                <span key={j}>{word}</span>
+              ))}
             </div>
-          </div>
-          <div className="scroll-section h-screen w-1/4 flex items-center justify-center">
-            <div className="bg-violet-100 w-[90%] h-[80%] rounded-4xl !p-12 relative">
-              <h1 className='text-[360px]/70 absolute right-[40px] top-[30px] text-ultrabold text-violet-200'>02</h1>
-              <h2 className='!mt-[360px] text-7xl'>Our Vision</h2>
-              <h3 className='text-lg'>To redefine digital visuals by pushing boundaries of style and storytelling. We don’t just make things look good — we make them feel inevitable.</h3>
-            </div>
-          </div>
-          <div className="scroll-section h-screen w-1/4 flex items-center justify-center">
-            <div className="bg-cyan-100 w-[90%] h-[80%] rounded-4xl !p-12 relative">
-              <h1 className='text-[360px]/70 absolute right-[40px] top-[30px] text-ultrabold text-cyan-200'>03</h1>
-              <h2 className='!mt-[360px] text-7xl'>What We Do</h2>
-              <h3 className='text-lg'>Branding, UI/UX, social media visuals, and creative assets — all designed to give your brand a distinct voice that stands out in a crowded world.</h3>
-            </div>
-          </div>
-        </div>
+          ))}
+        </motion.div>
       </div>
-    </div>
+    </main>
   );
 }
-//         <div className="panel w-1/4 h-screen flex items-center justify-center">
-//           <div className="bg-rose-100 w-[90%] h-[80%] rounded-4xl !p-12 relative ">
-//             <h1 className='text-[360px]/70 absolute right-[40px] top-[30px] text-ultrabold text-rose-200'>01</h1>
-//             <h2 className='!mt-[360px] text-7xl'>Who We Are</h2>
-//             <h3 className='text-lg'>Xyra is a modern graphic design brand that blends minimalism with bold creativity. Every design we craft is intentional, clean, and unforgettable.</h3>
-//           </div>
-//         </div>
-//         <div className="panel w-1/4 h-screen flex items-center justify-center">
-//           <div className="bg-violet-100 w-[90%] h-[80%] rounded-4xl !p-12 relative">
-//             <h1 className='text-[360px]/70 absolute right-[40px] top-[30px] text-ultrabold text-violet-200'>02</h1>
-//             <h2 className='!mt-[360px] text-7xl'>Our Vision</h2>
-//             <h3 className='text-lg'>To redefine digital visuals by pushing boundaries of style and storytelling. We don’t just make things look good — we make them feel inevitable.</h3>
-//           </div>
-//         </div>
-//         <div className="panel w-1/4 h-screen flex items-center justify-center">
-//           <div className="bg-cyan-100 w-[90%] h-[80%] rounded-4xl !p-12 relative">
-//             <h1 className='text-[360px]/70 absolute right-[40px] top-[30px] text-ultrabold text-cyan-200'>03</h1>
-//             <h2 className='!mt-[360px] text-7xl'>What We Do</h2>
-//             <h3 className='text-lg'>Branding, UI/UX, social media visuals, and creative assets — all designed to give your brand a distinct voice that stands out in a crowded world.</h3>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

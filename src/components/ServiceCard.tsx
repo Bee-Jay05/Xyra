@@ -2,7 +2,13 @@
 
 import { Poppins } from "next/font/google";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Lottie from "lottie-react";
+import branding from "@/lotties/Hiring.json"
+import website from "@/lotties/Tutoring Online.json"
+import visual from "@/lotties/Successful Marketer.json"
+import development from "@/lotties/Working with Cobot.json"
+import platform from "@/lotties/Binance Coin.json"
+import app from "@/lotties/E-tickets.json"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,72 +34,76 @@ export default function Services() {
   
 
   return (
-    <section className={`!py-16 bg-white text-center h-screen !px-16 ${poppins.className}`}>
-      <div>
+    <section className={`!py-16 bg-black text-center !px-16 ${poppins.className}`}>
+      <div className="text-white !mt-48 relative before:absolute before:content-[''] before:w-[2.5px] before:h-80 before:bg-[radial-gradient(circle,rgba(200,200,200,1)_0%,rgba(0,0,0,1)_100%)] before:top-[320] before:left-1/2 before:-translate-x-1/2">
          <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-7xl md:text-6xl font-normal"
+          className="text-9xl md:text-10xl font-medium"
         >
-          Our Services
+          Services
         </motion.h1>
-        <p className="!mt-4 text-lg text-gray-600 max-w-2xl !mx-auto">
+        <p className="!mt-8 !mb-8 text-xl text-[#737373] max-w-md !mx-auto font-medium">
           Two worlds. One vision. We craft powerful visuals and build digital experiences.
         </p>
+        <span className="font-medium !py-2 !px-4 bg-[radial-gradient(185.4%_106.06%_at_66.51%_82.61%,#131111_0%,#262222_100%)] rounded-full text-lg text-gray-200">Complex solution</span>
+        <h2 className="!mt-100 w-lg !mx-auto text-2xl">Instead of a request which sounds like “I need a website”, we embrace - “I want to market my product to get first organic users”, where we can suggest what to do, and execute the approved plan from A to Z.</h2>
       </div>
-    <div className="!mt-8 flex w-full gap-12 bg-[#6b7fff] bg-[linear-gradient(135deg,#CFF0FF_0%,#FED6FF_100%)] !p-8 rounded-3xl">
-        <div className="w-1/2 !p-8 rounded-3xl bg-white flex flex-col">
-          <div className="flex border-b !border-b-gray-500 !pb-8">
-            <h2 className="text-2xl md:text-4xl font-normal text-center">Creative & Graphics</h2>
-            <Image
-              src="/640744d0e7b29de6f1a29aee_icon-services-design.svg"
-              alt="Design Icon"
-              width={40}
-              height={40}
-              className="ml-4 !ml-auto"
-            />
-          </div>
-          <div className="text-start">
-            {graphicsServices.map((service, i) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="!py-5 border-b !border-b-gray-500"
-              >
-                <h3 className="text-2xl font-normal">{service.title}</h3>
-              </motion.div>
-            ))}
-          </div>
+      <div className="w-3/4 grid grid-cols-2 !mx-auto !mt-32 gap-8">
+        <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
+          <h1 className="text-4xl">Brand Strategy</h1>
+          <p className="!mt-8 text-lg text-gray-500">We establish comprehensive product-market fit hypotheses, validate them, and visualise in the most creative ways.</p>
+          <Lottie
+            animationData={branding}
+            loop={true}
+            className="w-full !mt-8"
+          />
         </div>
-        <div className="w-1/2 !p-8 rounded-3xl bg-white flex flex-col">
-          <div className="flex border-b !border-b-gray-500 !pb-8">
-            <h2 className="text-2xl md:text-4xl font-normal text-center">Web & Digital</h2>
-            <Image
-              src="/6449421486eae3cf4d387564_development-Illustration.svg"
-              alt="Web Icon"
-              width={40}
-              height={40}
-              className="ml-4 !ml-auto"
-            />
-          </div>
-          <div className="text-start">
-            {webServices.map((service, i) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="!py-5 border-b !border-b-gray-500"
-              >
-                <h3 className="text-2xl font-normal">{service.title}</h3>
-              </motion.div>
-            ))}
-          </div>
+        <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
+          <h1 className="text-4xl">Brand Visual</h1>
+          <p className="!mt-8 text-lg text-gray-500">We create brand materials that speak of your values non-verbally and complement your offering to the market.</p>
+          <Lottie
+            animationData={visual}
+            loop={true}
+            className="w-full !mt-8"
+          />
+        </div>
+        <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
+          <h1 className="text-4xl">Platforms</h1>
+          <p className="!mt-8 text-lg text-gray-500">We think about the big picture and focus primarily on your app's business success. We research deeply, validate thoroughly, and launch confidently.</p>
+          <Lottie
+            animationData={platform}
+            loop={true}
+            className="w-full !mt-8"
+          />
+        </div>
+        <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
+          <h1 className="text-4xl">Websites</h1>
+          <p className="!mt-8 text-lg text-gray-500">We don’t just design websites. We build reliable sales & marketing tools that drive predictably good metrics.</p>
+          <Lottie
+            animationData={website}
+            loop={true}
+            className="w-full !mt-8"
+          />
+        </div>
+        <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
+          <h1 className="text-4xl">Mobile App</h1>
+          <p className="!mt-8 text-lg text-gray-500">We're masters of UX gamification and user engagement. In a world where any app competes with Instagram we make usable products that attract and retain.</p>
+          <Lottie
+            animationData={app}
+            loop={true}
+            className="w-full !mt-8"
+          />
+        </div>
+        <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
+          <h1 className="text-4xl">Development</h1>
+          <p className="!mt-8 text-lg text-gray-500">We can take care of your product’s implementation, assuring the most efficient usage of time & resources in every decision & each line of code while maintaining seamless operation.</p>
+          <Lottie
+            animationData={development}
+            loop={true}
+            className="w-full !mt-8"
+          />
         </div>
       </div>
     </section>

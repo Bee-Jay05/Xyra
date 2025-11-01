@@ -2,6 +2,8 @@
 import Navbar from "@/components/Navbar";
 import Home from "../components/Home";
 import About from "@/components/About";
+import WhyUs from "@/components/WhyUs";
+import Approach from "@/components/Approach";
 import Service from "@/components/ServiceCard";
 import Portfolio from "@/components/ProjectCard";
 import Contact from "@/components/Contact";
@@ -13,6 +15,8 @@ export default function Page() {
       <Navbar />
       <Home />
       <About />
+      <WhyUs />
+      <Approach />
       <Service />
       <Portfolio />
       <Contact />

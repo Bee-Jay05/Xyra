@@ -1,7 +1,9 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import { motion } from "framer-motion";import { Poppins } from "next/font/google";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Poppins } from "next/font/google";
+import Image from 'next/image';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,9 +14,24 @@ const poppins = Poppins({
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const navItems = [
-    { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Work", href: "#portfolio" },
@@ -23,14 +40,21 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-5 left-0 w-full z-50 ${poppins.className}`}>
-      <div className="max-w-4xl !mx-auto !px-8 !py-1 flex items-center justify-between backdrop-blur-lg rounded-full border border-gray-200 shadow-md">
+      <motion.div 
+        className={`!mx-auto !px-4 !py-2 flex items-center justify-between backdrop-blur-lg rounded-md bg-[#191919] transition-all duration-1000 ${scrolled ? "w-sm" : "w-xl"}`}>
         {/* Brand */}
-        <Link href="#hero" className="text-2xl font-bold text-gray-900">
-          Xyra
+        <Link href="#hero" className="text-xl font-bold !text-white">
+          <Image
+            src="/bitmap31.png"
+            alt="XYRA Logo"
+            width={30}
+            height={30}
+            className="object-contain"
+          />
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
+        <ul className={`hidden overflow-hidden md:flex gap-4 text-white font-medium text-sm transition-all duration-1000 origin-right justify-between ${poppins.className} ${scrolled ? "w-[0px]" : "w-[260px]"}`}>
           {navItems.map((item) => (
             <li key={item.name}>
               <a
@@ -42,8 +66,19 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
-
+        
+        <div className="flex items-center gap-4">
+          <div className={`transition-all duration-1000 overflow-hidden ${scrolled ? "w-[128px]" : "w-0"}`}>
+            <button className={`bg-[#404040] text-white rounded-md hover:bg-[#7fb069] !px-3 !py-2 transition-all duration-1000 overflow-hidden min-w-[128px]`}>
+              Book A Call
+            </button>
+          </div>
+          <button className="hidden md:block bg-[#d36135] text-white !px-3 !py-2 rounded-md hover:bg-[#7fb069] transition-all duration-300">
+            Get in Touch
+          </button>
+          
+        </div>
+        
 
         {/* Mobile Menu Button */}
         <button
@@ -54,7 +89,7 @@ export default function Navbar() {
           <span className="w-6 h-0.5 bg-gray-800"></span>
           <span className="w-6 h-0.5 bg-gray-800"></span>
         </button>
-      </div>
+      </motion.div>
 
       {/* Mobile Dropdown */}
       {open && (

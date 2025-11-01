@@ -32,6 +32,10 @@ body {
   margin: 0;
 }
 
+.PP {
+  font-family: 'PP Neue Montreal', sans-serif;
+}
+
 a {
   color: inherit;
   text-decoration: none;
