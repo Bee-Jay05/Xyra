@@ -57,7 +57,7 @@ export default function Services() {
         </div>
         <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
           <h1 className="text-4xl">Platforms</h1>
-          <p className="!mt-8 text-lg text-gray-500">We think about the big picture and focus primarily on your app's business success. We research deeply, validate thoroughly, and launch confidently.</p>
+          <p className="!mt-8 text-lg text-gray-500">We think about the big picture and focus primarily on your app &apos s business success. We research deeply, validate thoroughly, and launch confidently.</p>
           <Lottie
             animationData={platform}
             loop={true}
@@ -75,7 +75,7 @@ export default function Services() {
         </div>
         <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
           <h1 className="text-4xl">Mobile App</h1>
-          <p className="!mt-8 text-lg text-gray-500">We're masters of UX gamification and user engagement. In a world where any app competes with Instagram we make usable products that attract and retain.</p>
+          <p className="!mt-8 text-lg text-gray-500">We are masters of UX gamification and user engagement. In a world where any app competes with Instagram we make usable products that attract and retain.</p>
           <Lottie
             animationData={app}
             loop={true}
