@@ -1,10 +1,8 @@
 "use client"
 
 import { Poppins } from "next/font/google";
-import Image from "next/image";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { count } from "console";
+import { motion } from "framer-motion";
 
 const poppins = Poppins({
   subsets: ["latin"],

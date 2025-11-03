@@ -66,7 +66,7 @@ export default function Services() {
         </div>
         <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
           <h1 className="text-4xl">Websites</h1>
-          <p className="!mt-8 text-lg text-gray-500">We don’t just design websites. We build reliable sales & marketing tools that drive predictably good metrics.</p>
+          <p className="!mt-8 text-lg text-gray-500">We do not just design websites. We build reliable sales & marketing tools that drive predictably good metrics.</p>
           <Lottie
             animationData={website}
             loop={true}
@@ -84,7 +84,7 @@ export default function Services() {
         </div>
         <div className="col-span-1 !px-12 !py-12 rounded-lg text-center flex flex-col items-center text-white bg-[#101010]">
           <h1 className="text-4xl">Development</h1>
-          <p className="!mt-8 text-lg text-gray-500">We can take care of your product’s implementation, assuring the most efficient usage of time & resources in every decision & each line of code while maintaining seamless operation.</p>
+          <p className="!mt-8 text-lg text-gray-500">We can take care of your product &apos s implementation, assuring the most efficient usage of time & resources in every decision & each line of code while maintaining seamless operation.</p>
           <Lottie
             animationData={development}
             loop={true}
