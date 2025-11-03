@@ -57,12 +57,12 @@ export default function Navbar({onContactClick}: {onContactClick: () => void}) {
         <ul className={`hidden overflow-hidden md:flex gap-4 text-white font-medium text-sm transition-all duration-1000 origin-right justify-between ${poppins.className} ${scrolled ? "w-[0px]" : "w-[260px]"}`}>
           {navItems.map((item) => (
             <li key={item.name}>
-              <a
+              <Link
                 href={item.href}
                 className="hover:text-[#6b7fff] transition"
               >
                 {item.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
