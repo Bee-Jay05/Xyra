@@ -1,94 +1,190 @@
 "use client";
+
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Poppins } from "next/font/google";
+import { ArrowRight, X } from "lucide-react";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300","400","500","600","700","800","900"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
 });
 
-export default function Contact() {
-  const [status, setStatus] = useState("");
+export default function Contact({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
+  const [hover, setHover] = useState(false);
+  const workTypes = [
+    "Web Design",
+    "Brand Identity",
+    "UI/UX Design",
+    "Motion Design",
+    "Development",
+    "Strategy",
+  ];
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("Sending...");
-
-    // Send form data to Formspree (replace with your endpoint)
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const response = await fetch("https://formspree.io/f/your-endpoint", {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" },
-    });
-
-    if (response.ok) {
-      setStatus("Message sent ✅");
-      form.reset();
-    } else {
-      setStatus("Something went wrong ❌");
-    }
-  }
+  if (!open) return null; // defensive early return (optional)
 
   return (
-    <section id="contact" className="w-full !py-24">
-      <div className={`max-w-6xl !mx-auto flex flex-col md:flex-row gap-12 md:gap-24 !px-6 ${poppins.className}`}>
-        <div className="w-1/2">
-            {/* CTA */}
-            <h2 className="text-4xl md:text-7xl font-normal !mb-6">
-                Get In Touch With Us
-            </h2>
-            <p className="text-lg text-gray-700 !mb-12 max-w-2xl mx-auto">
-                Have an idea, a project, or just want to say hi? Drop me a message and
-                I’ll get back to you as soon as I can.
-            </p>
-            <h5 className="text-lg">
-              Email: <br /><a href="mailto: abiolaabeeola159@gmail.com" className="text-[#6b7fff] text-2xl !mt-4">Xyra@gmail.com </a>
-            </h5>
-            <h5 className="text-lg !mt-6">
-              Phone: <br /><a href="tel:+2349063360393" className="text-[#6b7fff] text-2xl !mt-4">+234 906 336 0393</a>
-            </h5>
-        </div>
-        <div className="w-1/2 bg-gray-200/50 !p-8 rounded-3xl">
-        {/* Contact Form */}
-        <form onSubmit={handleSubmit} className="grid gap-6 text-left">
-          <input
-            type="text"
-            name="name"
-            required
-            placeholder="Your Name"
-            className="w-full !px-4 !py-3 rounded-xl bg-white border border-gray-500/20 focus:outline-none focus:ring-1 focus:ring-black"
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          key="overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-60 flex justify-end"
+        >
+          {/* dim background */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.45 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-black pointer-events-auto"
           />
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Your Email"
-            className="w-full !px-4 !py-3 rounded-xl bg-white border border-gray-500/20 focus:outline-none focus:ring-1 focus:ring-black"
+
+          {/* Layer 1 - blue (fast) */}
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.38, ease: "easeInOut", delay: 0 }}
+            className="absolute top-0 right-0 h-full w-2/5 bg-blue-600 rounded-l-2xl pointer-events-none"
           />
-          <textarea
-            name="message"
-            required
-            placeholder="Your Message"
-            rows={5}
-            className="w-full !px-4 !py-3 rounded-xl bg-white border border-gray-500/20 focus:outline-none focus:ring-1 focus:ring-black"
+
+          {/* Layer 2 - dark (slower) */}
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.48, ease: "easeInOut", delay: 0.08 }}
+            className="absolute top-0 right-0 h-full w-2/5 bg-[#1f1f1f] rounded-l-2xl pointer-events-none"
           />
-          <button
-            type="submit"
-            className="bg-fuchsia-600 hover:bg-fuchsia-800 text-white font-semibold !py-3 !px-6 rounded-xl hover:scale-102 transition"
+
+          {/* Panel - slowest */}
+          <motion.section
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.6, ease: "easeInOut", delay: 0.16 }}
+            className={`relative h-screen w-2/5 bg-[#171717] rounded-l-2xl !p-12 overflow-y-auto z-70 ${poppins.className}`}
+            aria-modal="true"
+            role="dialog"
           >
-            Send Message
-          </button>
-        </form>
-        </div>
+            <div className="flex justify-between items-start !mb-8">
+              <h2 className="text-white text-lg font-semibold leading-snug max-w-xs">
+                Get in touch to find out how we can collaborate
+              </h2>
+              <button
+                onClick={onClose}
+                aria-label="Close contact"
+                className="flex justify-end bg-[#222222] text-white rounded-full !p-3"
+              >
+                <X size={20} />
+              </button>
+            </div>
 
-        
+            <form className="grid grid-cols-2 gap-6 flex-1">
+              <div>
+                <label className="text-gray-300 text-sm">Your Full Name</label>
+                <input
+                  type="text"
+                  className="!mt-2 w-full !p-4 rounded-full bg-[#222222] h-12 text-white border border-gray-700 focus:outline-none focus:border-blue-500 transition"
+                />
+              </div>
 
-        {/* Status message */}
-        {status && <p className="mt-4 text-sm">{status}</p>}
-      </div>
-    </section>
+              <div>
+                <label className="text-gray-300 text-sm">Your Company</label>
+                <input
+                  type="text"
+                  className="!mt-2 w-full !p-4 rounded-full bg-[#222222] h-12 text-white border border-gray-700 focus:outline-none focus:border-blue-500 transition"
+                />
+              </div>
+
+              <div className="col-span-2">
+                <label className="text-gray-300 text-sm">Email Address</label>
+                <input
+                  type="email"
+                  className="!mt-2 w-full !p-4 rounded-full bg-[#222222] h-12 text-white border border-gray-700 focus:outline-none focus:border-blue-500 transition"
+                />
+              </div>
+
+              <div className="col-span-2">
+                <label className="block text-gray-300 text-sm !mb-3">
+                  Type of Work{" "}
+                  <span className="text-xs text-gray-500 !ml-1">
+                    (Pick what you’d like to explore)
+                  </span>
+                </label>
+                <div className="flex flex-wrap gap-3">
+                  {workTypes.map((type, i) => (
+                    <label
+                      key={i}
+                      className="flex items-center gap-2 text-white text-sm cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        className="accent-blue-600 w-4 h-4 rounded-sm"
+                      />
+                      {type}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="col-span-2">
+                <label className="text-gray-300 text-sm">Message</label>
+                <textarea
+                  rows={4}
+                  className="!mt-2 w-full !p-4 rounded-3xl bg-[#222222] text-white border border-gray-700 focus:outline-none focus:border-blue-500 transition"
+                />
+              </div>
+
+              <div
+                className="col-span-1 flex items-center !mt-4 relative"
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                >
+                {/* Left Arrow (appears on hover) */}
+                <motion.div
+                    className="absolute left-0 w-14 h-14 rounded-full bg-white text-[#171717] flex items-center justify-center"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: hover ? 1 : 0 }}
+                    transition={{ duration: 0.4}}
+                >
+                    <ArrowRight />
+                </motion.div>
+
+                {/* Send Message Button */}
+                <motion.button
+                    type="submit"
+                    animate={{ x: hover ? "56px" : "0px" }} // roughly the width of arrow
+                    transition={{ duration: 0.4}}
+                    className="bg-[#222222] text-white !px-6 h-14 rounded-full hover:bg-blue-700 active:scale-95 transition-transform"
+                >
+                    Send Message
+                </motion.button>
+
+                {/* Right Arrow (shrinks away on hover) */}
+                <motion.div
+                    className="absolute right-0 w-14 h-14 rounded-full bg-white text-[#171717] flex items-center justify-center"
+                    animate={{ scale: hover ? 0 : 1 }}
+                    transition={{ duration: 0.4}}
+                >
+                    <ArrowRight />
+                </motion.div>
+                </div>
+            </form>
+          </motion.section>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

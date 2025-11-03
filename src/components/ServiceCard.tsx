@@ -16,26 +16,12 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-const graphicsServices = [
-  { title: "Brand Identity", desc: "Logos, color systems, typography, and full brand guidelines." },
-  { title: "Graphic Design", desc: "Social media graphics, posters, and marketing visuals." },
-  { title: "Motion Graphics", desc: "Dynamic visuals and animated branding assets." },
-  { title: "Creative Direction", desc: "Helping you define and shape your brand’s visual voice." },
-];
-
-const webServices = [
-  { title: "Web Design", desc: "Modern, responsive websites tailored to your brand." },
-  { title: "Web Development", desc: "Full-stack builds with performance and scalability in mind." },
-  { title: "UI/UX", desc: "User-focused interfaces and seamless digital experiences." },
-  { title: "E-Commerce", desc: "Custom online stores with secure payments & smooth UX." },
-];
-
 export default function Services() {
   
 
   return (
-    <section className={`!py-16 bg-black text-center !px-16 ${poppins.className}`}>
-      <div className="text-white !mt-48 relative before:absolute before:content-[''] before:w-[2.5px] before:h-80 before:bg-[radial-gradient(circle,rgba(200,200,200,1)_0%,rgba(0,0,0,1)_100%)] before:top-[320] before:left-1/2 before:-translate-x-1/2">
+    <section className={`!py-48 bg-black text-center !px-16 ${poppins.className}`}>
+      <div className="text-white relative before:absolute before:content-[''] before:w-[2.5px] before:h-80 before:bg-[radial-gradient(circle,rgba(200,200,200,1)_0%,rgba(0,0,0,1)_100%)] before:top-[320] before:left-1/2 before:-translate-x-1/2">
          <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -1,0 +1,32 @@
+@keyframes draw {
+  0% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: #000;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 5;
+  }
+
+  70% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: #000;
+  }
+
+  80% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: #000;
+    stroke-width: 5;
+  }
+
+  100% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: #000;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 5;
+  }
+}
+
+.svgPath {
+  animation: draw 3s ease-in-out forwards;
+}

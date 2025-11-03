@@ -12,7 +12,7 @@ const poppins = Poppins({
 });
 
 
-export default function Navbar() {
+export default function Navbar({onContactClick}: {onContactClick: () => void}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   
@@ -37,7 +37,7 @@ export default function Navbar() {
     { name: "Work", href: "#portfolio" },
     { name: "Contact", href: "#contact" },
   ];
-
+  
   return (
     <nav className={`fixed top-5 left-0 w-full z-50 ${poppins.className}`}>
       <motion.div 
@@ -45,10 +45,10 @@ export default function Navbar() {
         {/* Brand */}
         <Link href="#hero" className="text-xl font-bold !text-white">
           <Image
-            src="/bitmap31.png"
+            src="/neuma2.png"
             alt="XYRA Logo"
-            width={30}
-            height={30}
+            width={96}
+            height={48}
             className="object-contain"
           />
         </Link>
@@ -73,9 +73,19 @@ export default function Navbar() {
               Book A Call
             </button>
           </div>
-          <button className="hidden md:block bg-[#d36135] text-white !px-3 !py-2 rounded-md hover:bg-[#7fb069] transition-all duration-300">
-            Get in Touch
-          </button>
+          <button
+  onClick={() => {
+    console.log("Navbar Contact button clicked");
+    if (typeof onContactClick !== "function") {
+      console.log("onContactClick is NOT a function", onContactClick);
+    } else {
+      onContactClick();
+    }
+  }}
+  className="md:block bg-[#d36135] text-white !px-3 !py-2 rounded-md hover:bg-[#7fb069] transition-all duration-300"
+>
+  Contact
+</button>
           
         </div>
         

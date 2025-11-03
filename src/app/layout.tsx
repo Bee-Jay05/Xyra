@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ClientLayout from "@/components/ClientLayout";
 
 
 
@@ -30,7 +31,7 @@ export default function RootLayout({
         <link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet"></link>
       </head>
       <body className= "PP">
-        {children}
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
